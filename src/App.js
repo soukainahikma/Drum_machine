@@ -14,16 +14,21 @@ function App() {
 		"C":["Cev_H2","https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"]
 	}
 	const [name,setMusic]=useState("Music")
-	// function keypress(event){
-	// 		var music = new Audio(listen[event.key.toUpperCase()][1]);
-	// 		setMusic(listen[event.key.toUpperCase()][0])
-	// 		music.play();
-	// }
-	// document.body.addEventListener("keypress",keypress)
+	function keypress(event){
+		var set =document.getElementById(event.key.toUpperCase());
+		if(set !=null)
+		{
+			// document.getElementById("display").innerHTML ="hello"
+			setMusic(listen[event.key.toUpperCase()][0])
+			set.play();
+		}
+	}
+	document.body.addEventListener("keypress",keypress)
 	return (
 		<div id="drum-machine" style={{ "marginTop": "50%" }}>
-				<div id="display" className="row drum-pad text-center">{name}</div>
+				<div id="display" className="row mypad text-center">{name}</div>
 				<Buttons item={listen} func={setMusic}/>
+				<input type="range" orient="vertical"></input>
 		</div>
 	);
 }
